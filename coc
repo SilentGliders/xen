@@ -1,0 +1,27 @@
+def calculate_portfolio_value(assets):
+    """
+    Calculates the total value of a portfolio.
+    
+    :param assets: List of dictionaries, where each dictionary contains the 'name', 'amount', and 'price' of an asset.
+    :return: Total portfolio value.
+    """
+    total_value = 0
+    
+    for asset in assets:
+        # Ensure asset contains the required keys
+        if 'amount' in asset and 'price' in asset:
+            total_value += asset['amount'] * asset['price']
+        else:
+            print(f"Warning: Missing 'amount' or 'price' for asset: {asset.get('name', 'Unknown')}")
+    
+    return total_value
+
+# Example usage
+assets = [
+    {'name': 'Bitcoin', 'amount': 0.5, 'price': 30000},
+    {'name': 'Ethereum', 'amount': 2, 'price': 2000},
+    {'name': 'Cardano', 'amount': 5000, 'price': 0.5}
+]
+
+portfolio_value = calculate_portfolio_value(assets)
+print(f"Total Portfolio Value: ${portfolio_value:.2f}")
